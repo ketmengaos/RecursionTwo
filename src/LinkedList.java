@@ -53,9 +53,9 @@ public class LinkedList<E extends Comparable<E>> {
             return new Pair<LinkedListEl<E>, LinkedListEl<E>>(null, null);
         //if (head.next != null) {
         Pair<LinkedListEl<E>, LinkedListEl<E>> pair = everyOther(head.next.next);
-        
-        return new Pair<LinkedListEl<E>, LinkedListEl<E>>(pair.first, pair.second == null ? head : pair.first);
-        //}
+        head.next = pair.first;
+        return new Pair<LinkedListEl<E>, LinkedListEl<E>>(head, pair.first == null ? head : pair.first);
+        //}head.next =
         //return new Pair<LinkedListEl<E>, LinkedListEl<E>>(head, head);
     }
 
@@ -95,6 +95,7 @@ public class LinkedList<E extends Comparable<E>> {
 
     public static void main(String[] args) {
         LinkedList<Integer> ll = new LinkedList<Integer>();
+        ll.addHead(-40);
         ll.addHead(-40);
         ll.addHead(-40);
         ll.addHead(10);
