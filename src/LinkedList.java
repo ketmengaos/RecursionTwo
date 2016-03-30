@@ -2,7 +2,17 @@ import java.util.*;
 
 public class LinkedList<E extends Comparable<E>> {
 
-    private static class LinkedListEl<E extends Comparable<E>> {
+    private static class Pair<K, V> {
+        K first;
+        V second;
+
+        public Pair(K f, V s) {
+            this.first = f;
+            this.second = s;
+        }
+    }
+
+    private static class LinkedListEl<E> {
         E data;
         LinkedListEl<E> next;
 
@@ -11,6 +21,7 @@ public class LinkedList<E extends Comparable<E>> {
             this.next = next;
         }
     }
+
     LinkedListEl<E> head = null,
                     tail = null;
 
@@ -21,17 +32,14 @@ public class LinkedList<E extends Comparable<E>> {
             tail = head;
     }
 
+    //First Assignment:
     private static <E extends Comparable<E>> E max(LinkedListEl<E> head) {
         //Assumes head != null;
-        LinkedListEl<E> p;
-        E value = head.data;
-        int compar;
-        for(p = head; p != null; p = p.next) {
-            compar = p.data.compareTo(value);
-            if (compar > 0) {
-                value = p.data;
-            }
-        }
+        E value;
+        if (head == null || head.next == null) return head.data;
+        value = max(head.next);
+        if(head.data.compareTo(value) > 0)
+            value = head.data;
         return value;
     }
 
@@ -39,6 +47,30 @@ public class LinkedList<E extends Comparable<E>> {
         return max(head);
     }
 
+    // Second Assignment:
+    /*private static <E> Pair<LinkedListEl<E>, LinkedListEl<E>> everyOther(LinkedListEl<E> head) {
+        if(head == null || head.next == null)
+            return new Pair<LinkedListEl<E>, LinkedListEl<E>>(null, null);
+        Pair<LinkedListEl<E>, LinkedListEl<E>> pair = everyOther(head.next.next);
+        head.next.next = pair.first;
+        return new Pair<LinkedListEl<E>, LinkedListEl<E>>(head, pair.second == null ? head : pair.second);
+    }
+
+    public LinkedList<E> everyOther() {
+
+    }/*
+
+    // Third Assignment:
+    /*private static <E> boolean hasDuplicate(LinkedListEl<E> head) {
+        LinkedListEl<E> p;
+        if(head == null || head.next == null)
+            return false;
+
+    }
+    public boolean hasDuplicate() {
+
+    }
+    */
     public static void main(String[] args) {
         LinkedList<Integer> ll = new LinkedList<Integer>();
         ll.addHead(-1);
@@ -47,6 +79,7 @@ public class LinkedList<E extends Comparable<E>> {
         ll.addHead(-40);
         ll.addHead(-80);
         System.out.println(ll.max());
+        //System.out.println(ll.everyOther());
 
         LinkedList<Character> ll2 = new LinkedList<Character>();
         ll2.addHead('A');
