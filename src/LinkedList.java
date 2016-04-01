@@ -1,4 +1,4 @@
-import java.util.*;
+
 
 public class LinkedList<E extends Comparable<E>> {
 
@@ -49,9 +49,9 @@ public class LinkedList<E extends Comparable<E>> {
 
     // Second Assignment:
     private static <E> Pair<LinkedListEl<E>, LinkedListEl<E>> everyOther(LinkedListEl<E> head) {
-        if (head == null || head.next == null || head.next.next == null)
+        if (head == null || head.next == null)
             return new Pair<LinkedListEl<E>, LinkedListEl<E>>(null, null);
-        Pair<LinkedListEl<E>, LinkedListEl<E>> pair = everyOther(head.next.next);
+        Pair<LinkedListEl<E>, LinkedListEl<E>> pair  = everyOther(head.next.next);
         head.next = pair.first;
         return new Pair<LinkedListEl<E>, LinkedListEl<E>>(head, pair.first == null ? head : pair.second);
     }
