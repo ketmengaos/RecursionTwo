@@ -51,12 +51,9 @@ public class LinkedList<E extends Comparable<E>> {
     private static <E> Pair<LinkedListEl<E>, LinkedListEl<E>> everyOther(LinkedListEl<E> head) {
         if (head == null || head.next == null || head.next.next == null)
             return new Pair<LinkedListEl<E>, LinkedListEl<E>>(null, null);
-        //if (head.next != null) {
         Pair<LinkedListEl<E>, LinkedListEl<E>> pair = everyOther(head.next.next);
         head.next = pair.first;
-        return new Pair<LinkedListEl<E>, LinkedListEl<E>>(head, pair.first == null ? head : pair.first);
-        //}head.next =
-        //return new Pair<LinkedListEl<E>, LinkedListEl<E>>(head, head);
+        return new Pair<LinkedListEl<E>, LinkedListEl<E>>(head, pair.first == null ? head : pair.second);
     }
 
     public LinkedList<E> everyOther() {
@@ -97,7 +94,6 @@ public class LinkedList<E extends Comparable<E>> {
         LinkedList<Integer> ll = new LinkedList<Integer>();
         ll.addHead(-40);
         ll.addHead(-40);
-        ll.addHead(-40);
         ll.addHead(10);
         ll.addHead(-45);
         ll.addHead(-3);
@@ -114,7 +110,7 @@ public class LinkedList<E extends Comparable<E>> {
         ll2.addHead('G');
         ll2.addHead('Z');
         //System.out.println(ll2.max());
-        //System.out.println(ll2.everyOther());
+        System.out.println(ll2.everyOther());
         //System.out.println(ll2.hasDuplicate());
     }
 
