@@ -1,4 +1,10 @@
-
+//**********************************************************************************
+//******** || Ket-Meng Jimmy Cheng   ~    April 1, 2016   ~  LinkedLists || ********
+//******** || ---------------------------------------------------------- || ********
+//******** || This program does three things: finds the maximum node     || ********
+//******** || in a linked list, returns a new linkedlist with the 1, 3, 5|| ********
+//******** || nodes, and returns true if a linked list has a duplicate.  || ********
+//**********************************************************************************
 
 public class LinkedList<E extends Comparable<E>> {
 
@@ -34,7 +40,6 @@ public class LinkedList<E extends Comparable<E>> {
 
     // First Assignment:
     private static <E extends Comparable<E>> E max(LinkedListEl<E> head) {
-        //Assumes head != null;
         E value;
         if (head == null || head.next == null) return head.data;
         value = max(head.next);
@@ -91,6 +96,7 @@ public class LinkedList<E extends Comparable<E>> {
     }
 
     public static void main(String[] args) {
+        //Please comment/uncomment for each test.
         LinkedList<Integer> ll = new LinkedList<Integer>();
         ll.addHead(-40);
         ll.addHead(-40);
@@ -98,9 +104,9 @@ public class LinkedList<E extends Comparable<E>> {
         ll.addHead(-45);
         ll.addHead(-3);
         ll.addHead(-80);
-        //System.out.println(ll.max());
-        System.out.println(ll.everyOther());
-        //System.out.println(ll.hasDuplicate());
+        //System.out.println(ll.max()); //Max method
+        System.out.println(ll.everyOther()); //everyOther method
+        //System.out.println(ll.hasDuplicate()); //hasDuplicate method
 
         LinkedList<Character> ll2 = new LinkedList<Character>();
         ll2.addHead('A');
